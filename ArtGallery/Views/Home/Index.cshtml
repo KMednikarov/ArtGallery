@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ArtGallery.Models.Artwork>
+@{
+    ViewBag.Title = "Art Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.DropDownList("ArtworkFilter",
+                               ViewData["categoriesList"] as SelectList
+                               , new { @class = "form-control", @id = "filterArtworks" })
+    <input type="submit" value="Filter" />
+}
+    <hr />
+    <div class="row-fluid">
+        <div class="span2">
+            <div>
+                @foreach (var artwork in @Model)
+                {
+                    <div class="photo-div">
+                        <a href="@Url.Action("Details","Details", new { id = @artwork.Artwork_Id })">
+                            <img alt="@artwork.Name" src="@Url.Content(artwork.ImagePath)" class="photo" />
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+

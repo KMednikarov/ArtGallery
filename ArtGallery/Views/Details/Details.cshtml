@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ArtGallery.Models.Artwork>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/custom.css" rel="stylesheet" />
+<script src="~/Scripts/photos.js"></script>
+<h2>Details</h2>
+<div>
+    @foreach (var artwork in Model)
+    {
+        <div>
+            <p>@artwork.Name</p>
+
+            <p>by @artwork.Author</p>
+
+            <p>Price: @artwork.Price</p>
+
+            <img alt="@artwork.Name" src="@Url.Content(artwork.ImagePath)" class="photo" onclick="display(this);" />
+
+        </div>
+    }
+</div>
+<div id="divimage" class="modal">
+    <img class="modal-content" id="modalimg">
+    <div id="caption"></div>
+</div>

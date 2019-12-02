@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Upload new artwork</p>
+
+<div>
+    @using (Html.BeginForm("Upload","Upload",FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        //Name, Author, Price, Category,Size,,Status,Image
+        
+    <form>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="Name" required />
+        </div>
+        <div class="form-group">
+            <label>Author</label>
+            <input type="text" name="Author" required />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" name="Price" required />
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="Category">
+                <option value="1">Drawing</option>
+                <option value="2">Photography</option>
+                <option value="3">Sculpture</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Size</label>
+            <input type="text" name="Size" required />
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <select name="Status">
+                <option value="New">New</option>
+                <option value="Sold">Sold</option>
+                <option value="Returned to the author">Returned to the author</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="postedImage" required />
+        </div>
+        <input type="submit" class="btn btn-default" value="Submit"/>
+    </form>
+
+    }
+
+</div>
